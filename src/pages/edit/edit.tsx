@@ -20,6 +20,7 @@ function Edit() {
     Thursday: { starter: "", main: "", sweet: "" },
     Friday: { starter: "", main: "", sweet: "" },
   });
+  const [submissionStatus, setSubmissionStatus] = useState(false);
 
   const handleInputChange = (day: string, mealType: string, value: string) => {
     setFormData((prevState) => ({
@@ -42,6 +43,7 @@ function Edit() {
 
     localStorage.setItem("db", JSON.stringify(updatedData));
     setUpdatedDb(updatedData);
+    setSubmissionStatus(true);
   };
 
   return (
@@ -276,6 +278,27 @@ function Edit() {
       >
         Submit
       </Button>
+
+      {submissionStatus && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 9999,
+          }}
+        >
+          <Typography variant="h4" style={{ color: "#fff" }}>
+            Data submitted successfully!
+          </Typography>
+        </div>
+      )}
     </>
   );
 }
