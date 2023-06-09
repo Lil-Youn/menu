@@ -1,0 +1,34 @@
+{
+  "days": [
+    {
+      "id": "monday",
+      "starter": "Create a login form using formik in react js",
+      "main": "Todays article will demonstrate how to develop a login form in react js using formik.",
+      "sweet": "bla bla bla bla bla bla bla bla bla bla"
+    },
+    {
+      "id": "tuesday",
+      "starter": "How to parse or read CSV files in ReactJS",
+      "main": "In this article, I will teach you how to parse or read CSV files in ReactJS in the simplest way possible. ",
+      "sweet": "bla bla bla bla bla bla bla bla bla bla"
+    },
+    {
+      "id": "wednesday",
+      "starter": "How to parse or read CSV files in ReactJS",
+      "main": "In this article, I will teach you how to parse or read CSV files in ReactJS in the simplest way possible. ",
+      "sweet": "bla bla bla bla bla bla bla bla bla bla"
+    },
+    {
+      "id": "thursday",
+      "starter": "How to parse or read CSV files in ReactJS",
+      "main": "In this article, I will teach you how to parse or read CSV files in ReactJS in the simplest way possible. ",
+      "sweet": "bla bla bla bla bla bla bla bla bla bla"
+    },
+    {
+      "id": "friday",
+      "starter": "How to parse or read CSV files in ReactJS",
+      "main": "In this article, I will teach you how to parse or read CSV files in ReactJS in the simplest way possible. ",
+      "sweet": "bla bla bla bla bla bla bla bla bla bla"
+    }
+  ]
+}
