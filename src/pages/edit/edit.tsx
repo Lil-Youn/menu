@@ -1,7 +1,49 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import IosShareIcon from "@mui/icons-material/IosShare";
+import db from "../db.json";
+import { useState } from "react";
+
+interface FormData {
+  [key: string]: {
+    starter: string;
+    main: string;
+    sweet: string;
+  };
+}
 
 function Edit() {
+  const [updatedDb, setUpdatedDb] = useState(db);
+  const [formData, setFormData] = useState<FormData>({
+    Monday: { starter: "", main: "", sweet: "" },
+    Tuesday: { starter: "", main: "", sweet: "" },
+    Wednesday: { starter: "", main: "", sweet: "" },
+    Thursday: { starter: "", main: "", sweet: "" },
+    Friday: { starter: "", main: "", sweet: "" },
+  });
+
+  const handleInputChange = (day: string, mealType: string, value: string) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [day]: {
+        ...prevState[day],
+        [mealType]: value,
+      },
+    }));
+  };
+
+  const handleSaveChanges = () => {
+    const updatedData: typeof db = { ...updatedDb };
+
+    for (const day in formData) {
+      updatedData[day as keyof typeof db].starter = formData[day].starter;
+      updatedData[day as keyof typeof db].main = formData[day].main;
+      updatedData[day as keyof typeof db].sweet = formData[day].sweet;
+    }
+
+    localStorage.setItem("db", JSON.stringify(updatedData));
+    setUpdatedDb(updatedData);
+  };
+
   return (
     <>
       <Box>
@@ -20,10 +62,35 @@ function Edit() {
             marginBottom: "10px",
           }}
         >
-          <TextField multiline rows={2} label="Starter" />
-          <TextField multiline rows={2} label="Main" />
-          <TextField multiline rows={2} label="Sweet" />
+          <TextField
+            multiline
+            rows={2}
+            label="Starter"
+            value={formData.Monday.starter}
+            onChange={(e) =>
+              handleInputChange("Monday", "starter", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Main"
+            value={formData.Monday.main}
+            onChange={(e) =>
+              handleInputChange("Monday", "main", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Sweet"
+            value={formData.Monday.sweet}
+            onChange={(e) =>
+              handleInputChange("Monday", "sweet", e.target.value)
+            }
+          />
         </div>
+
         <Typography
           sx={{ display: "flex", justifyItems: "flex-start" }}
           variant="button"
@@ -39,10 +106,35 @@ function Edit() {
             marginBottom: "10px",
           }}
         >
-          <TextField multiline rows={2} label="Starter" />
-          <TextField multiline rows={2} label="Main" />
-          <TextField multiline rows={2} label="Sweet" />
+          <TextField
+            multiline
+            rows={2}
+            label="Starter"
+            value={formData.Tuesday.starter}
+            onChange={(e) =>
+              handleInputChange("Tuesday", "starter", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Main"
+            value={formData.Tuesday.main}
+            onChange={(e) =>
+              handleInputChange("Tuesday", "main", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Sweet"
+            value={formData.Tuesday.sweet}
+            onChange={(e) =>
+              handleInputChange("Tuesday", "sweet", e.target.value)
+            }
+          />
         </div>
+
         <Typography
           sx={{ display: "flex", justifyItems: "flex-start" }}
           variant="button"
@@ -58,10 +150,35 @@ function Edit() {
             marginBottom: "10px",
           }}
         >
-          <TextField multiline rows={2} label="Starter" />
-          <TextField multiline rows={2} label="Main" />
-          <TextField multiline rows={2} label="Sweet" />
+          <TextField
+            multiline
+            rows={2}
+            label="Starter"
+            value={formData.Wednesday.starter}
+            onChange={(e) =>
+              handleInputChange("Wednesday", "starter", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Main"
+            value={formData.Wednesday.main}
+            onChange={(e) =>
+              handleInputChange("Wednesday", "main", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Sweet"
+            value={formData.Wednesday.sweet}
+            onChange={(e) =>
+              handleInputChange("Wednesday", "sweet", e.target.value)
+            }
+          />
         </div>
+
         <Typography
           sx={{ display: "flex", justifyItems: "flex-start" }}
           variant="button"
@@ -77,10 +194,35 @@ function Edit() {
             marginBottom: "10px",
           }}
         >
-          <TextField multiline rows={2} label="Starter" />
-          <TextField multiline rows={2} label="Main" />
-          <TextField multiline rows={2} label="Sweet" />
+          <TextField
+            multiline
+            rows={2}
+            label="Starter"
+            value={formData.Thursday.starter}
+            onChange={(e) =>
+              handleInputChange("Thursday", "starter", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Main"
+            value={formData.Thursday.main}
+            onChange={(e) =>
+              handleInputChange("Thursday", "main", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Sweet"
+            value={formData.Thursday.sweet}
+            onChange={(e) =>
+              handleInputChange("Thursday", "sweet", e.target.value)
+            }
+          />
         </div>
+
         <Typography
           sx={{ display: "flex", justifyItems: "flex-start" }}
           variant="button"
@@ -96,19 +238,46 @@ function Edit() {
             marginBottom: "10px",
           }}
         >
-          <TextField multiline rows={2} label="Starter" />
-          <TextField multiline rows={2} label="Main" />
-          <TextField multiline rows={2} label="Sweet" />
+          <TextField
+            multiline
+            rows={2}
+            label="Starter"
+            value={formData.Friday.starter}
+            onChange={(e) =>
+              handleInputChange("Friday", "starter", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Main"
+            value={formData.Friday.main}
+            onChange={(e) =>
+              handleInputChange("Friday", "main", e.target.value)
+            }
+          />
+          <TextField
+            multiline
+            rows={2}
+            label="Sweet"
+            value={formData.Friday.sweet}
+            onChange={(e) =>
+              handleInputChange("Friday", "sweet", e.target.value)
+            }
+          />
         </div>
       </Box>
+
       <Button
         sx={{ width: 215, marginTop: 2, borderRadius: 5 }}
         startIcon={<IosShareIcon />}
         variant="contained"
+        onClick={handleSaveChanges}
       >
         Submit
       </Button>
     </>
   );
 }
+
 export default Edit;
