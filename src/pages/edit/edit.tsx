@@ -46,6 +46,10 @@ function Edit() {
     localStorage.setItem("db", JSON.stringify(updatedData));
     setUpdatedDb(updatedData);
     setSubmissionStatus(true);
+
+    setTimeout(() => {
+      setSubmissionStatus(false);
+    }, 1000); // Set the timeout duration (in milliseconds) as per your requirement
   };
 
   return (
