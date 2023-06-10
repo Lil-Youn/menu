@@ -1,7 +1,9 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Fab, TextField, Typography } from "@mui/material";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import db from "../db.json";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 interface FormData {
   [key: string]: {
@@ -271,13 +273,24 @@ function Edit() {
       </Box>
 
       <Button
-        sx={{ width: 215, marginTop: 2, borderRadius: 5 }}
+        sx={{ width: 215, marginTop: 0, borderRadius: 5 }}
         startIcon={<IosShareIcon />}
         variant="contained"
         onClick={handleSaveChanges}
       >
         Submit
       </Button>
+      <NavLink to="/">
+        <Fab
+          sx={{ width: 215, marginTop: 0, borderRadius: 5 }}
+          color="primary"
+          variant="extended"
+          size="medium"
+        >
+          <MenuBookIcon />
+          Show Menu
+        </Fab>
+      </NavLink>
 
       {submissionStatus && (
         <div

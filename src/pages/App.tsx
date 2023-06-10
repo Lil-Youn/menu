@@ -1,9 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Fab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import "./App.css";
-
+import LoginIcon from "@mui/icons-material/Login";
 import { useEffect, useState } from "react";
 import gifImage from "./prepping-up-dineout.gif";
+import { NavLink } from "react-router-dom";
 
 function App() {
   const [db, setDb] = useState({
@@ -317,6 +318,12 @@ function App() {
             </Typography>
           </Box>
         </Box>
+        <NavLink to="/login">
+          <Fab color="primary" variant="extended" size="medium">
+            <LoginIcon />
+            Back to Adminpanel
+          </Fab>
+        </NavLink>
       </Box>
     </>
   );
