@@ -25,7 +25,6 @@ function App() {
     <>
       <Box
         sx={{
-          bgcolor: "black",
           width: "40vw",
           height: "auto",
           zIndex: "9998",
