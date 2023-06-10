@@ -33,8 +33,8 @@ function App() {
       >
         <Box
           className="outerFrame"
-          width="60vw"
-          height="100%"
+          width="550px" // Set the width to match the weekday boxes
+          height="200px" // Adjust the height as needed
           bgcolor="lightgray"
           position="relative"
         >
@@ -90,6 +90,7 @@ function App() {
           position: "relative",
           zIndex: 9999,
           padding: "0px",
+          bgcolor: "grey",
         }}
       >
         <Box
