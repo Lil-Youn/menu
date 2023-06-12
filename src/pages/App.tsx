@@ -175,13 +175,13 @@ function App() {
             }}
           >
             <Typography variant="button" color="black">
-              Starter:{db.Tuesday.starter}
+              Starter: {db.Tuesday.starter}
             </Typography>
             <Typography variant="button" color="black">
-              Main:{db.Tuesday.main}
+              Main: {db.Tuesday.main}
             </Typography>
             <Typography variant="button" color="black">
-              Sweet{db.Tuesday.sweet}
+              Sweet: {db.Tuesday.sweet}
             </Typography>
           </Box>
         </Box>
@@ -220,13 +220,13 @@ function App() {
             }}
           >
             <Typography variant="button" color="black">
-              Starter:{db.Wednesday.starter}
+              Starter: {db.Wednesday.starter}
             </Typography>
             <Typography variant="button" color="black">
-              Main:{db.Wednesday.main}
+              Main: {db.Wednesday.main}
             </Typography>
             <Typography variant="button" color="black">
-              Sweet{db.Wednesday.sweet}
+              Sweet: {db.Wednesday.sweet}
             </Typography>
           </Box>
         </Box>
@@ -265,13 +265,13 @@ function App() {
             }}
           >
             <Typography variant="button" color="black">
-              Starter{db.Thursday.starter}
+              Starter: {db.Thursday.starter}
             </Typography>
             <Typography variant="button" color="black">
-              Main:{db.Thursday.main}
+              Main: {db.Thursday.main}
             </Typography>
             <Typography variant="button" color="black">
-              Sweet:{db.Thursday.sweet}
+              Sweet: {db.Thursday.sweet}
             </Typography>
           </Box>
         </Box>
@@ -310,13 +310,13 @@ function App() {
             }}
           >
             <Typography variant="button" color="black">
-              Starter:{db.Friday.starter}
+              Starter: {db.Friday.starter}
             </Typography>
             <Typography variant="button" color="black">
-              Main:{db.Friday.main}
+              Main: {db.Friday.main}
             </Typography>
             <Typography variant="button" color="black">
-              Sweet:{db.Friday.sweet}
+              Sweet: {db.Friday.sweet}
             </Typography>
           </Box>
         </Box>
