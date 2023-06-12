@@ -25,9 +25,11 @@ function App() {
     <>
       <Box
         sx={{
-          width: "40vw",
+          width: "100%", // Set the width to 100% to adapt to the screen size
           height: "auto",
           zIndex: "9998",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Box
@@ -318,13 +320,13 @@ function App() {
             </Typography>
           </Box>
         </Box>
-        <NavLink to="/login">
-          <Fab color="primary" variant="extended" size="medium">
-            <LoginIcon />
-            Back to Adminpanel
-          </Fab>
-        </NavLink>
       </Box>
+      <NavLink to="/login">
+        <Fab color="primary" variant="extended" size="medium">
+          <LoginIcon />
+          Back to Adminpanel
+        </Fab>
+      </NavLink>
     </>
   );
 }
