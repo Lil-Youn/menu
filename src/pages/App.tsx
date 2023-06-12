@@ -104,7 +104,8 @@ function App() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           }}
         >
           <Typography
@@ -150,7 +151,8 @@ function App() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           }}
         >
           <Typography
@@ -195,7 +197,8 @@ function App() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           }}
         >
           <Typography
@@ -240,7 +243,8 @@ function App() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           }}
         >
           <Typography
@@ -285,7 +289,8 @@ function App() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
           }}
         >
           <Typography
