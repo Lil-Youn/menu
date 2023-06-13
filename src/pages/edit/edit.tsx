@@ -49,7 +49,7 @@ function Edit() {
 
     setTimeout(() => {
       setSubmissionStatus(false);
-    }, 1000); // Set the timeout duration (in milliseconds) as per your requirement
+    }, 1000);
   };
 
   return (

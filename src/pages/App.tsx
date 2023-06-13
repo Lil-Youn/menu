@@ -25,7 +25,7 @@ function App() {
     <>
       <Box
         sx={{
-          width: "100%", // Set the width to 100% to adapt to the screen size
+          width: "100%",
           height: "auto",
           zIndex: "9998",
           display: "flex",
@@ -34,8 +34,8 @@ function App() {
       >
         <Box
           className="outerFrame"
-          width="550px" // Set the width to match the weekday boxes
-          height="200px" // Adjust the height as needed
+          width="550px"
+          height="200px"
           bgcolor="lightgray"
           position="relative"
         >
