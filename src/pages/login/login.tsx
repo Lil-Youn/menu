@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (email === "chefs" && password === "chef-ivx1!") {
+    if (email === "chefs" && password === "test!") {
       navigate("/edit");
 
       if (rememberMe) {
