@@ -29,8 +29,30 @@ const xata = getXataClient();
 const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"];
 
 async function fetchMenu(): Promise<MenuRecord | null> {
-  const menu = await xata.db.menu.getMany();
-  return menu;
+  const [menuRecord] = await xata.db.menu.getMany();
+
+  if (menuRecord) {
+    return {
+      ...menuRecord,
+      monday_starter: menuRecord.monday_starter ?? "",
+      monday_main: menuRecord.monday_main ?? "",
+      monday_sweet: menuRecord.monday_sweet ?? "",
+      tuesday_starter: menuRecord.tuesday_starter ?? "",
+      tuesday_main: menuRecord.tuesday_main ?? "",
+      tuesday_sweet: menuRecord.tuesday_sweet ?? "",
+      wednesday_starter: menuRecord.wednesday_starter ?? "",
+      wednesday_main: menuRecord.wednesday_main ?? "",
+      wednesday_sweet: menuRecord.wednesday_sweet ?? "",
+      thursday_starter: menuRecord.thursday_starter ?? "",
+      thursday_main: menuRecord.thursday_main ?? "",
+      thursday_sweet: menuRecord.thursday_sweet ?? "",
+      friday_starter: menuRecord.friday_starter ?? "",
+      friday_main: menuRecord.friday_main ?? "",
+      friday_sweet: menuRecord.friday_sweet ?? "",
+    };
+  }
+
+  return null;
 }
 
 function Edit() {
@@ -39,6 +61,16 @@ function Edit() {
   useEffect(() => {
     fetchMenu().then((fetchedMenu) => setMenu(fetchedMenu));
   }, []);
+
+  const _updateFieldWithDelay = (
+    day: string,
+    field: string,
+    newValue: string
+  ) => {
+    setTimeout(() => {
+      updateField(day, field, newValue);
+    }, 2000);
+  };
 
   async function updateField(day: string, field: string, newValue: string) {
     await xata.db.menu.update("rec_cjdtq9tqdu05925101v0", {
@@ -51,7 +83,7 @@ function Edit() {
           ...prevMenu,
           [`${day}_${field}`]: newValue,
         } as MenuRecord)
-    ); // Explicitly annotate prevMenu with MenuRecord type
+    );
   }
 
   return (
@@ -81,7 +113,7 @@ function Edit() {
                   label="Starter"
                   value={menu![`${day}_starter` as keyof MenuRecord]}
                   onChange={(event) =>
-                    updateField(day, "starter", event.target.value)
+                    _updateFieldWithDelay(day, "starter", event.target.value)
                   }
                 />
                 <TextField
@@ -90,7 +122,7 @@ function Edit() {
                   label="Main"
                   value={menu![`${day}_main` as keyof MenuRecord]}
                   onChange={(event) =>
-                    updateField(day, "main", event.target.value)
+                    _updateFieldWithDelay(day, "main", event.target.value)
                   }
                 />
                 <TextField
@@ -99,7 +131,7 @@ function Edit() {
                   label="Sweet"
                   value={menu![`${day}_sweet` as keyof MenuRecord]}
                   onChange={(event) =>
-                    updateField(day, "sweet", event.target.value)
+                    _updateFieldWithDelay(day, "sweet", event.target.value)
                   }
                 />
               </div>
