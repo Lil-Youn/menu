@@ -2,7 +2,6 @@ import { Box, Fab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import "./App.css";
 import LoginIcon from "@mui/icons-material/Login";
-
 import gifImage from "./prepping-up-dineout.gif";
 import { NavLink } from "react-router-dom";
 import { getXataClient } from "../xata";
