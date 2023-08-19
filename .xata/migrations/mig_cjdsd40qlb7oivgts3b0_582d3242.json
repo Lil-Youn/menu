@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjdsd40qlb7oivgts3b0",
+  "parentID": "mig_cjdsd18qlb7oivgts3a0",
+  "checksum": "1:582d324240f26f52390ea69a9e6a43c265ab8bea83e8c26090705ca8403bdcad",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "monday-sweet",
+          "type": "string"
+        },
+        "table": "menu"
+      }
+    }
+  ]
+}

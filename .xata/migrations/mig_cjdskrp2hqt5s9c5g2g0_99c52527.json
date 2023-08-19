@@ -1,0 +1,14 @@
+{
+  "id": "mig_cjdskrp2hqt5s9c5g2g0",
+  "parentID": "mig_cjdskqgqlb7oivgts530",
+  "checksum": "1:99c525276c1abd14af99ad92792da4ef56a3454de0bc237500f2e9b838c359e9",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "friday_main",
+        "oldName": "friday-main",
+        "table": "menu"
+      }
+    }
+  ]
+}

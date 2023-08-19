@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjdscs0qlb7oivgts380",
+  "parentID": "mig_cjds9m5v798i1lp4q5sg",
+  "checksum": "1:f65f4c2d3f524467e4fc4861f0d76ba1af7d3aa04a87c4b80dbd0ff962b91e6b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "mondaystarter",
+          "type": "string"
+        },
+        "table": "menu"
+      }
+    }
+  ]
+}

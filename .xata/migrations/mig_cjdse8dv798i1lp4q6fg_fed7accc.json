@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjdse8dv798i1lp4q6fg",
+  "parentID": "mig_cjdse6gqlb7oivgts3h0",
+  "checksum": "1:fed7acccd0ff2bea935b96f44a42b84a52f74ebcc9f16df343a8533368c98436",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "friday-sweet",
+          "type": "string"
+        },
+        "table": "menu"
+      }
+    }
+  ]
+}

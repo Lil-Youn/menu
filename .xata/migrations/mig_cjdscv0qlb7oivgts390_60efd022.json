@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjdscv0qlb7oivgts390",
+  "parentID": "mig_cjdscs0qlb7oivgts380",
+  "checksum": "1:60efd02236a2e1ad448024def14fd91d29e8b551ac873c5a82bd673cdbd0eda9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "monday-main",
+          "type": "string"
+        },
+        "table": "menu"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mig_cjdskooqlb7oivgts520",
+  "parentID": "mig_cjdskn92hqt5s9c5g2f0",
+  "checksum": "1:1ee9e7e82aeb02ec370c70058f143d1ed305e34e6126e3194860d686df090cd7",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "thursday_sweet",
+        "oldName": "thursday-sweet",
+        "table": "menu"
+      }
+    }
+  ]
+}
