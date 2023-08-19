@@ -2,25 +2,29 @@ import { Box, Fab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import "./App.css";
 import LoginIcon from "@mui/icons-material/Login";
-import { useEffect, useState } from "react";
+
 import gifImage from "./prepping-up-dineout.gif";
 import { NavLink } from "react-router-dom";
+import { getXataClient } from "../xata";
+import { useQuery } from "react-query";
 
 function App() {
-  const [db, setDb] = useState({
-    Monday: { starter: "", main: "", sweet: "" },
-    Tuesday: { starter: "", main: "", sweet: "" },
-    Wednesday: { starter: "", main: "", sweet: "" },
-    Thursday: { starter: "", main: "", sweet: "" },
-    Friday: { starter: "", main: "", sweet: "" },
+  const {
+    data: menu = [],
+    isLoading,
+    isError,
+  } = useQuery("menu", async () => {
+    const xata = getXataClient();
+    return xata.db["menu"].getAll();
   });
 
-  useEffect(() => {
-    const storedDb = localStorage.getItem("db");
-    if (storedDb) {
-      setDb(JSON.parse(storedDb));
-    }
-  }, []);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error loading posts</p>;
+  }
   return (
     <>
       <Box
@@ -85,6 +89,7 @@ function App() {
           </Box>
         </Box>
       </Box>
+
       <Box
         className="weekdays-container"
         sx={{
@@ -94,237 +99,240 @@ function App() {
           bgcolor: "grey",
         }}
       >
-        <Box
-          sx={{
-            marginTop: "15px",
-            marginBottom: "15px",
-            height: "200px",
-            width: "550px",
-            bgcolor: "whitesmoke",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          }}
-        >
-          <Typography
-            variant="h3"
-            color="black"
-            sx={{
-              flex: "1",
-              borderBottom: "2px solid yellow",
-              pb: "5px",
-              marginLeft: "30px",
-            }}
-          >
-            Monday
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: "2",
-              alignItems: "flex-end",
-              pr: "20px",
-            }}
-          >
-            <Typography variant="button" color="black">
-              Starter: {db.Monday.starter}
-            </Typography>
-            <Typography variant="button" color="black">
-              Main: {db.Monday.main}
-            </Typography>
-            <Typography variant="button" color="black">
-              Sweet: {db.Monday.sweet}
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            marginTop: "15px",
-            marginBottom: "15px",
-            height: "200px",
-            width: "550px",
-            bgcolor: "whitesmoke",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          }}
-        >
-          <Typography
-            variant="h3"
-            color="black"
-            sx={{
-              flex: "1",
-              borderBottom: "2px solid yellow",
-              pb: "5px",
-              marginLeft: "30px",
-            }}
-          >
-            Tuesday
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: "2",
-              alignItems: "flex-end",
-              pr: "20px",
-            }}
-          >
-            <Typography variant="button" color="black">
-              Starter: {db.Tuesday.starter}
-            </Typography>
-            <Typography variant="button" color="black">
-              Main: {db.Tuesday.main}
-            </Typography>
-            <Typography variant="button" color="black">
-              Sweet: {db.Tuesday.sweet}
-            </Typography>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            marginTop: "15px",
-            marginBottom: "15px",
-            height: "200px",
-            width: "550px",
-            bgcolor: "whitesmoke",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          }}
-        >
-          <Typography
-            variant="h3"
-            color="black"
-            sx={{
-              flex: "1",
-              borderBottom: "2px solid yellow",
-              pb: "5px",
-              marginLeft: "30px",
-            }}
-          >
-            Wednesday
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: "2",
-              alignItems: "flex-end",
-              pr: "20px",
-            }}
-          >
-            <Typography variant="button" color="black">
-              Starter: {db.Wednesday.starter}
-            </Typography>
-            <Typography variant="button" color="black">
-              Main: {db.Wednesday.main}
-            </Typography>
-            <Typography variant="button" color="black">
-              Sweet: {db.Wednesday.sweet}
-            </Typography>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            marginTop: "15px",
-            marginBottom: "15px",
-            height: "200px",
-            width: "550px",
-            bgcolor: "whitesmoke",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          }}
-        >
-          <Typography
-            variant="h3"
-            color="black"
-            sx={{
-              flex: "1",
-              borderBottom: "2px solid yellow",
-              pb: "5px",
-              marginLeft: "30px",
-            }}
-          >
-            Thursday
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: "2",
-              alignItems: "flex-end",
-              pr: "20px",
-            }}
-          >
-            <Typography variant="button" color="black">
-              Starter: {db.Thursday.starter}
-            </Typography>
-            <Typography variant="button" color="black">
-              Main: {db.Thursday.main}
-            </Typography>
-            <Typography variant="button" color="black">
-              Sweet: {db.Thursday.sweet}
-            </Typography>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            marginTop: "15px",
-            marginBottom: "15px",
-            height: "200px",
-            width: "550px",
-            bgcolor: "whitesmoke",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          }}
-        >
-          <Typography
-            variant="h3"
-            color="black"
-            sx={{
-              flex: "1",
-              borderBottom: "2px solid yellow",
-              pb: "5px",
-              marginLeft: "30px",
-            }}
-          >
-            Friday
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flex: "2",
-              alignItems: "flex-end",
-              pr: "20px",
-            }}
-          >
-            <Typography variant="button" color="black">
-              Starter: {db.Friday.starter}
-            </Typography>
-            <Typography variant="button" color="black">
-              Main: {db.Friday.main}
-            </Typography>
-            <Typography variant="button" color="black">
-              Sweet: {db.Friday.sweet}
-            </Typography>
-          </Box>
-        </Box>
+        {menu.map((menu) => (
+          <>
+            <Box
+              sx={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                height: "200px",
+                width: "550px",
+                bgcolor: "whitesmoke",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              }}
+            >
+              <Typography
+                variant="h3"
+                color="black"
+                sx={{
+                  flex: "1",
+                  borderBottom: "2px solid yellow",
+                  pb: "5px",
+                  marginLeft: "30px",
+                }}
+              >
+                Monday
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "2",
+                  alignItems: "flex-end",
+                  pr: "20px",
+                }}
+              >
+                <Typography variant="button" color="black">
+                  Starter: {menu.monday_starter}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Main: {menu.monday_main}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Sweet: {menu.monday_sweet}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                height: "200px",
+                width: "550px",
+                bgcolor: "whitesmoke",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              }}
+            >
+              <Typography
+                variant="h3"
+                color="black"
+                sx={{
+                  flex: "1",
+                  borderBottom: "2px solid yellow",
+                  pb: "5px",
+                  marginLeft: "30px",
+                }}
+              >
+                Tuesday
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "2",
+                  alignItems: "flex-end",
+                  pr: "20px",
+                }}
+              >
+                <Typography variant="button" color="black">
+                  Starter: {menu.tuesday_starter}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Main: {menu.tuesday_main}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Sweet: {menu.tuesday_sweet}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                height: "200px",
+                width: "550px",
+                bgcolor: "whitesmoke",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              }}
+            >
+              <Typography
+                variant="h3"
+                color="black"
+                sx={{
+                  flex: "1",
+                  borderBottom: "2px solid yellow",
+                  pb: "5px",
+                  marginLeft: "30px",
+                }}
+              >
+                Wednesday
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "2",
+                  alignItems: "flex-end",
+                  pr: "20px",
+                }}
+              >
+                <Typography variant="button" color="black">
+                  Starter: {menu.wednesday_starter}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Main: {menu.wednesday_main}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Sweet: {menu.wednesday_sweet}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                height: "200px",
+                width: "550px",
+                bgcolor: "whitesmoke",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              }}
+            >
+              <Typography
+                variant="h3"
+                color="black"
+                sx={{
+                  flex: "1",
+                  borderBottom: "2px solid yellow",
+                  pb: "5px",
+                  marginLeft: "30px",
+                }}
+              >
+                Thursday
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "2",
+                  alignItems: "flex-end",
+                  pr: "20px",
+                }}
+              >
+                <Typography variant="button" color="black">
+                  Starter: {menu.thursday_starter}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Main: {menu.thursday_main}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Sweet: {menu.thursday_sweet}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                height: "200px",
+                width: "550px",
+                bgcolor: "whitesmoke",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+              }}
+            >
+              <Typography
+                variant="h3"
+                color="black"
+                sx={{
+                  flex: "1",
+                  borderBottom: "2px solid yellow",
+                  pb: "5px",
+                  marginLeft: "30px",
+                }}
+              >
+                Friday
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: "2",
+                  alignItems: "flex-end",
+                  pr: "20px",
+                }}
+              >
+                <Typography variant="button" color="black">
+                  Starter: {menu.friday_starter}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Main: {menu.friday_main}
+                </Typography>
+                <Typography variant="button" color="black">
+                  Sweet: {menu.friday_sweet}
+                </Typography>
+              </Box>
+            </Box>
+          </>
+        ))}
       </Box>
       <NavLink to="/login">
         <Fab color="primary" variant="extended" size="medium">
