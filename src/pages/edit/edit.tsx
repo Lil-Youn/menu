@@ -5,29 +5,53 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getXataClient } from "../../xata";
 
+type MenuRecord = {
+  id: string;
+  monday_starter: string;
+  monday_main: string;
+  monday_sweet: string;
+  tuesday_starter: string;
+  tuesday_main: string;
+  tuesday_sweet: string;
+  wednesday_starter: string;
+  wednesday_main: string;
+  wednesday_sweet: string;
+  thursday_starter: string;
+  thursday_main: string;
+  thursday_sweet: string;
+  friday_starter: string;
+  friday_main: string;
+  friday_sweet: string;
+};
+
 const xata = getXataClient();
 
 const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"];
 
-async function fetchMenu() {
+async function fetchMenu(): Promise<MenuRecord | null> {
   const menu = await xata.db.menu.getMany();
   return menu;
 }
 
 function Edit() {
-  const [menu, setMenu] = useState(null);
+  const [menu, setMenu] = useState<MenuRecord | null>(null);
 
   useEffect(() => {
     fetchMenu().then((fetchedMenu) => setMenu(fetchedMenu));
   }, []);
 
   async function updateField(day: string, field: string, newValue: string) {
-    const updatedRecord = await xata.db.menu.update(
-      "rec_cjdtq9tqdu05925101v0",
-      { [`${day}_${field}`]: newValue }
-    );
+    await xata.db.menu.update("rec_cjdtq9tqdu05925101v0", {
+      [`${day}_${field}`]: newValue,
+    });
 
-    setMenu(updatedRecord);
+    setMenu(
+      (prevMenu) =>
+        ({
+          ...prevMenu,
+          [`${day}_${field}`]: newValue,
+        } as MenuRecord)
+    ); // Explicitly annotate prevMenu with MenuRecord type
   }
 
   return (
@@ -55,7 +79,7 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Starter"
-                  value={menu[`${day}_starter`]}
+                  value={menu![`${day}_starter` as keyof MenuRecord]}
                   onChange={(event) =>
                     updateField(day, "starter", event.target.value)
                   }
@@ -64,7 +88,7 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Main"
-                  value={menu[`${day}_main`]}
+                  value={menu![`${day}_main` as keyof MenuRecord]}
                   onChange={(event) =>
                     updateField(day, "main", event.target.value)
                   }
@@ -73,7 +97,7 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Sweet"
-                  value={menu[`${day}_sweet`]}
+                  value={menu![`${day}_sweet` as keyof MenuRecord]}
                   onChange={(event) =>
                     updateField(day, "sweet", event.target.value)
                   }
