@@ -3,6 +3,8 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { Box, Button, Fab, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getXataClient } from "../../xata";
 
 type MenuRecord = {
@@ -57,34 +59,58 @@ async function fetchMenu(): Promise<MenuRecord | null> {
 
 function Edit() {
   const [menu, setMenu] = useState<MenuRecord | null>(null);
+  const [pendingChanges, setPendingChanges] = useState<Record<string, string>>(
+    {}
+  );
 
   useEffect(() => {
     fetchMenu().then((fetchedMenu) => setMenu(fetchedMenu));
   }, []);
 
-  const _updateFieldWithDelay = (
-    day: string,
-    field: string,
-    newValue: string
-  ) => {
-    setTimeout(() => {
-      updateField(day, field, newValue);
-    }, 2000);
+  const handleInputChange = (day: string, field: string, newValue: string) => {
+    setPendingChanges((prevChanges) => ({
+      ...prevChanges,
+      [`${day}_${field}`]: newValue,
+    }));
   };
 
-  async function updateField(day: string, field: string, newValue: string) {
-    await xata.db.menu.update("rec_cjdtq9tqdu05925101v0", {
-      [`${day}_${field}`]: newValue,
-    });
-
-    setMenu(
-      (prevMenu) =>
-        ({
+  const updateField = async (day: string, field: string, newValue: string) => {
+    setMenu((prevMenu) => {
+      if (prevMenu) {
+        return {
           ...prevMenu,
           [`${day}_${field}`]: newValue,
-        } as MenuRecord)
-    );
-  }
+        };
+      }
+      return prevMenu;
+    });
+  };
+
+  const [submissionStatus, setSubmissionStatus] = useState<string | null>(null);
+  const handleSaveChanges = async () => {
+    try {
+      for (const dayField in pendingChanges) {
+        const [day, field] = dayField.split("_");
+        await xata.db.menu.update("rec_cjdtq9tqdu05925101v0", {
+          [`${day}_${field}`]: pendingChanges[dayField],
+        });
+        updateField(day, field, pendingChanges[dayField]);
+      }
+
+      toast.success("Data submitted successfully!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+      setSubmissionStatus("success");
+      setPendingChanges({});
+    } catch (error) {
+      console.error(error);
+      toast.error("Could not submit data. Please try again.", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setSubmissionStatus("error");
+    }
+  };
 
   return (
     <>
@@ -111,27 +137,39 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Starter"
-                  value={menu![`${day}_starter` as keyof MenuRecord]}
+                  value={
+                    pendingChanges[`${day}_starter` as keyof MenuRecord] ||
+                    menu[`${day}_starter` as keyof MenuRecord] ||
+                    ""
+                  }
                   onChange={(event) =>
-                    _updateFieldWithDelay(day, "starter", event.target.value)
+                    handleInputChange(day, "starter", event.target.value)
                   }
                 />
                 <TextField
                   multiline
                   rows={2}
                   label="Main"
-                  value={menu![`${day}_main` as keyof MenuRecord]}
+                  value={
+                    pendingChanges[`${day}_main` as keyof MenuRecord] ||
+                    menu[`${day}_main` as keyof MenuRecord] ||
+                    ""
+                  }
                   onChange={(event) =>
-                    _updateFieldWithDelay(day, "main", event.target.value)
+                    handleInputChange(day, "main", event.target.value)
                   }
                 />
                 <TextField
                   multiline
                   rows={2}
                   label="Sweet"
-                  value={menu![`${day}_sweet` as keyof MenuRecord]}
+                  value={
+                    pendingChanges[`${day}_sweet` as keyof MenuRecord] ||
+                    menu[`${day}_sweet` as keyof MenuRecord] ||
+                    ""
+                  }
                   onChange={(event) =>
-                    _updateFieldWithDelay(day, "sweet", event.target.value)
+                    handleInputChange(day, "sweet", event.target.value)
                   }
                 />
               </div>
@@ -144,6 +182,7 @@ function Edit() {
         sx={{ width: 215, marginTop: 0, borderRadius: 5 }}
         startIcon={<IosShareIcon />}
         variant="contained"
+        onClick={handleSaveChanges}
       >
         Submit
       </Button>
@@ -158,6 +197,12 @@ function Edit() {
           Show Menu
         </Fab>
       </NavLink>
+      {submissionStatus === "success" && (
+        <ToastContainer position="bottom-right" />
+      )}
+      {submissionStatus === "error" && (
+        <ToastContainer position="bottom-right" />
+      )}
     </>
   );
 }
