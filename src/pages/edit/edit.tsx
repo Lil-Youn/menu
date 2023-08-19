@@ -62,14 +62,22 @@ function Edit() {
   const [pendingChanges, setPendingChanges] = useState<Record<string, string>>(
     {}
   );
+  const [fieldValues, setFieldValues] = useState<Record<string, string>>({}); // New state
 
   useEffect(() => {
-    fetchMenu().then((fetchedMenu) => setMenu(fetchedMenu));
+    fetchMenu().then((fetchedMenu) => {
+      setMenu(fetchedMenu);
+      setFieldValues(fetchedMenu || {}); // Initialize fieldValues with fetched data
+    });
   }, []);
 
   const handleInputChange = (day: string, field: string, newValue: string) => {
     setPendingChanges((prevChanges) => ({
       ...prevChanges,
+      [`${day}_${field}`]: newValue,
+    }));
+    setFieldValues((prevValues) => ({
+      ...prevValues,
       [`${day}_${field}`]: newValue,
     }));
   };
@@ -138,9 +146,7 @@ function Edit() {
                   rows={2}
                   label="Starter"
                   value={
-                    pendingChanges[`${day}_starter` as keyof MenuRecord] ||
-                    menu[`${day}_starter` as keyof MenuRecord] ||
-                    ""
+                    fieldValues[`${day}_starter` as keyof MenuRecord] || ""
                   }
                   onChange={(event) =>
                     handleInputChange(day, "starter", event.target.value)
@@ -150,11 +156,7 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Main"
-                  value={
-                    pendingChanges[`${day}_main` as keyof MenuRecord] ||
-                    menu[`${day}_main` as keyof MenuRecord] ||
-                    ""
-                  }
+                  value={fieldValues[`${day}_main` as keyof MenuRecord] || ""}
                   onChange={(event) =>
                     handleInputChange(day, "main", event.target.value)
                   }
@@ -163,11 +165,7 @@ function Edit() {
                   multiline
                   rows={2}
                   label="Sweet"
-                  value={
-                    pendingChanges[`${day}_sweet` as keyof MenuRecord] ||
-                    menu[`${day}_sweet` as keyof MenuRecord] ||
-                    ""
-                  }
+                  value={fieldValues[`${day}_sweet` as keyof MenuRecord] || ""}
                   onChange={(event) =>
                     handleInputChange(day, "sweet", event.target.value)
                   }
