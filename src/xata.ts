@@ -58,12 +58,10 @@ export const getXataClient = () => {
   if (instance) return instance;
 
   instance = new XataClient({
-    databaseURL:
-      "https://Simon-s-workspace-qf11og.eu-central-1.xata.sh/db/test-database",
-
-    apiKey: "xau_L2vUhB5BjsieMs6YSEpivK8DL5pQ4gf50",
+    databaseURL: import.meta.env.VITE_XATA_URL,
+    apiKey: import.meta.env.VITE_XATA_API_KEY,
     fetch: fetch,
-    branch: "main",
+    branch: import.meta.env.VITE_XATA_BRANCH,
     enableBrowser: true,
   });
   return instance;
