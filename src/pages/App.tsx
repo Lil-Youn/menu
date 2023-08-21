@@ -1,11 +1,11 @@
+import LoginIcon from "@mui/icons-material/Login";
 import { Box, Fab } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import "./App.css";
-import LoginIcon from "@mui/icons-material/Login";
-import gifImage from "./prepping-up-dineout.gif";
+import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import { getXataClient } from "../xata";
-import { useQuery } from "react-query";
+import "./App.css";
+import gifImage from "./prepping-up-dineout.gif";
 
 function App() {
   const {
@@ -37,7 +37,7 @@ function App() {
       >
         <Box
           className="outerFrame"
-          width="550px"
+          width="100%"
           height="200px"
           bgcolor="lightgray"
           position="relative"
@@ -105,7 +105,7 @@ function App() {
                 marginTop: "15px",
                 marginBottom: "15px",
                 height: "200px",
-                width: "550px",
+                width: "100%",
                 bgcolor: "whitesmoke",
                 display: "flex",
                 flexDirection: "row",
@@ -151,7 +151,7 @@ function App() {
                 marginTop: "15px",
                 marginBottom: "15px",
                 height: "200px",
-                width: "550px",
+                width: "100%",
                 bgcolor: "whitesmoke",
                 display: "flex",
                 flexDirection: "row",
@@ -197,7 +197,7 @@ function App() {
                 marginTop: "15px",
                 marginBottom: "15px",
                 height: "200px",
-                width: "550px",
+                width: "100%",
                 bgcolor: "whitesmoke",
                 display: "flex",
                 flexDirection: "row",
@@ -243,7 +243,7 @@ function App() {
                 marginTop: "15px",
                 marginBottom: "15px",
                 height: "200px",
-                width: "550px",
+                width: "100%",
                 bgcolor: "whitesmoke",
                 display: "flex",
                 flexDirection: "row",
@@ -289,7 +289,7 @@ function App() {
                 marginTop: "15px",
                 marginBottom: "15px",
                 height: "200px",
-                width: "550px",
+                width: "100%",
                 bgcolor: "whitesmoke",
                 display: "flex",
                 flexDirection: "row",
