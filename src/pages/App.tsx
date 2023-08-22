@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import { getXataClient } from "../xata";
 import "./App.css";
-import gifImage from "./prepping-up-dineout.gif";
+import gifImage from "./chefs-table.gif";
 
 function App() {
   const {
@@ -26,313 +26,564 @@ function App() {
   }
   return (
     <>
-      <Box
-        sx={{
-          width: "100%",
-          height: "auto",
-          zIndex: "9998",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <div className="app-wrapper" style={{ backgroundColor: "gray" }}>
         <Box
-          className="outerFrame"
-          width="100%"
-          height="200px"
-          bgcolor="lightgray"
-          position="relative"
+          sx={{
+            width: "100%",
+            minWidth: "60vw",
+            height: "auto",
+            position: "relative",
+            zIndex: "9998",
+            display: "flex",
+            justifyContent: "center",
+            bgcolor: "gray",
+          }}
         >
           <Box
-            sx={{
-              width: "100%",
-              position: "relative",
-              justifyContent: "center",
-            }}
+            className="outerFrame"
+            width="100%"
+            height="auto"
+            bgcolor="gray"
+            position="relative"
           >
-            <img
-              width="100%"
-              height="100%"
-              src={gifImage}
-              alt="GIF"
-              style={{
-                filter: "grayscale(100%)",
-                opacity: "0.8",
-              }}
-            />
             <Box
               sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                zIndex: 9999,
                 width: "100%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                position: "relative",
                 justifyContent: "center",
-                textAlign: "center",
+                bgcolor: "gray",
               }}
             >
-              <Typography variant="h4" color="white">
-                THE
-              </Typography>
-              <Typography
-                variant="h3"
-                color="white"
-                sx={{ borderBottom: "2px solid yellow" }}
+              <img
+                width="100%"
+                height="100%"
+                src={gifImage}
+                alt="GIF"
+                style={{
+                  filter: "grayscale(100%)",
+                  opacity: "0.8",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  zIndex: 9999,
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
               >
-                WEEKLY MENU
-              </Typography>
+                <Typography
+                  variant="h4"
+                  color="white"
+                  sx={{
+                    fontSize: {
+                      xs: "20px",
+                      md: "65px",
+                    },
+                  }}
+                >
+                  THE
+                </Typography>
+                <Typography
+                  variant="h3"
+                  color="white"
+                  sx={{
+                    borderBottom: "2px solid yellow",
+                    fontSize: {
+                      xs: "30px",
+                      md: "85px",
+                    },
+                  }}
+                >
+                  WEEKLY MENU
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
 
-      <Box
-        className="weekdays-container"
-        sx={{
-          position: "relative",
-          zIndex: 9999,
-          padding: "0px",
-          bgcolor: "grey",
-        }}
-      >
-        {menu.map((menu) => (
-          <>
-            <Box
-              sx={{
-                marginTop: "15px",
-                marginBottom: "15px",
-                height: "200px",
-                width: "100%",
-                bgcolor: "whitesmoke",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{
-                  flex: "1",
-                  borderBottom: "2px solid yellow",
-                  pb: "5px",
-                  marginLeft: "30px",
-                }}
-              >
-                Monday
-              </Typography>
+        <Box
+          className="weekdays-container"
+          sx={{
+            position: "relative",
+            zIndex: 9999,
+            padding: "0px",
+            bgcolor: "grey",
+          }}
+        >
+          {menu.map((menu) => (
+            <>
               <Box
                 sx={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  height: "200px",
+                  width: "100%",
+                  bgcolor: "whitesmoke",
                   display: "flex",
-                  flexDirection: "column",
-                  flex: "2",
-                  alignItems: "flex-end",
-                  pr: "20px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
+                  marginLeft: { xs: "0px", md: "100px" },
                 }}
               >
-                <Typography variant="button" color="black">
-                  Starter: {menu.monday_starter}
+                <Typography
+                  variant="h3"
+                  color="black"
+                  sx={{
+                    flex: "1",
+                    borderBottom: "2px solid yellow",
+                    pb: "5px",
+                    marginLeft: {
+                      xs: "auto",
+                      md: "20px",
+                    },
+                    fontSize: {
+                      xs: "26px",
+                      md: "60px",
+                    },
+                    transform: {
+                      xs: "rotate(-90deg)",
+                      md: "none",
+                    },
+                    transformOrigin: "center-left",
+                  }}
+                >
+                  Monday
                 </Typography>
-                <Typography variant="button" color="black">
-                  Main: {menu.monday_main}
-                </Typography>
-                <Typography variant="button" color="black">
-                  Sweet: {menu.monday_sweet}
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "2",
+                    alignItems: {
+                      xs: "center",
+                      md: "center",
+                    },
+                    paddingRight: {
+                      xs: "auto",
+                      md: "20px", // Set your desired value for desktop
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Starter:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.monday_starter}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Main:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.monday_main}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Sweet:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.monday_sweet}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                marginTop: "15px",
-                marginBottom: "15px",
-                height: "200px",
-                width: "100%",
-                bgcolor: "whitesmoke",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{
-                  flex: "1",
-                  borderBottom: "2px solid yellow",
-                  pb: "5px",
-                  marginLeft: "30px",
-                }}
-              >
-                Tuesday
-              </Typography>
               <Box
                 sx={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  height: "200px",
+                  width: "100%",
+                  bgcolor: "whitesmoke",
                   display: "flex",
-                  flexDirection: "column",
-                  flex: "2",
-                  alignItems: "flex-end",
-                  pr: "20px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
+                  marginLeft: { xs: "0px", md: "-100px" },
                 }}
               >
-                <Typography variant="button" color="black">
-                  Starter: {menu.tuesday_starter}
+                <Typography
+                  variant="h3"
+                  color="black"
+                  sx={{
+                    flex: "1",
+                    borderBottom: "2px solid yellow",
+                    pb: "5px",
+                    marginLeft: {
+                      xs: "auto",
+                      md: "20px",
+                    },
+                    fontSize: {
+                      xs: "26px",
+                      md: "60px",
+                    },
+                    transform: {
+                      xs: "rotate(-90deg)",
+                      md: "none",
+                    },
+                    transformOrigin: "center-left",
+                  }}
+                >
+                  Tuesday
                 </Typography>
-                <Typography variant="button" color="black">
-                  Main: {menu.tuesday_main}
-                </Typography>
-                <Typography variant="button" color="black">
-                  Sweet: {menu.tuesday_sweet}
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "2",
+                    alignItems: {
+                      xs: "center",
+                      md: "center",
+                    },
+                    paddingRight: {
+                      xs: "auto",
+                      md: "20px", // Set your desired value for desktop
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Starter:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.tuesday_starter}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Main:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.tuesday_main}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Sweet:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.tuesday_sweet}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                marginTop: "15px",
-                marginBottom: "15px",
-                height: "200px",
-                width: "100%",
-                bgcolor: "whitesmoke",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{
-                  flex: "1",
-                  borderBottom: "2px solid yellow",
-                  pb: "5px",
-                  marginLeft: "30px",
-                }}
-              >
-                Wednesday
-              </Typography>
               <Box
                 sx={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  height: "200px",
+                  width: "100%",
+                  bgcolor: "whitesmoke",
                   display: "flex",
-                  flexDirection: "column",
-                  flex: "2",
-                  alignItems: "flex-end",
-                  pr: "20px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
+                  marginLeft: { xs: "0px", md: "100px" },
                 }}
               >
-                <Typography variant="button" color="black">
-                  Starter: {menu.wednesday_starter}
+                <Typography
+                  variant="h3"
+                  color="black"
+                  sx={{
+                    flex: "1",
+                    borderBottom: "2px solid yellow",
+                    pb: "5px",
+                    marginLeft: {
+                      xs: "auto",
+                      md: "20px",
+                    },
+                    fontSize: {
+                      xs: "26px",
+                      md: "60px",
+                    },
+                    transform: {
+                      xs: "rotate(-90deg)",
+                      md: "none",
+                    },
+                    transformOrigin: "center-left",
+                  }}
+                >
+                  Wednesday
                 </Typography>
-                <Typography variant="button" color="black">
-                  Main: {menu.wednesday_main}
-                </Typography>
-                <Typography variant="button" color="black">
-                  Sweet: {menu.wednesday_sweet}
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "2",
+                    alignItems: {
+                      xs: "center",
+                      md: "center",
+                    },
+                    paddingRight: {
+                      xs: "auto",
+                      md: "20px", // Set your desired value for desktop
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Starter:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.wednesday_starter}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Main:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.wednesday_main}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Sweet:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.wednesday_sweet}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                marginTop: "15px",
-                marginBottom: "15px",
-                height: "200px",
-                width: "100%",
-                bgcolor: "whitesmoke",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{
-                  flex: "1",
-                  borderBottom: "2px solid yellow",
-                  pb: "5px",
-                  marginLeft: "30px",
-                }}
-              >
-                Thursday
-              </Typography>
               <Box
                 sx={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  height: "200px",
+                  width: "100%",
+                  bgcolor: "whitesmoke",
                   display: "flex",
-                  flexDirection: "column",
-                  flex: "2",
-                  alignItems: "flex-end",
-                  pr: "20px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
+                  marginLeft: { xs: "0px", md: "-100px" },
                 }}
               >
-                <Typography variant="button" color="black">
-                  Starter: {menu.thursday_starter}
+                <Typography
+                  variant="h3"
+                  color="black"
+                  sx={{
+                    flex: "1",
+                    borderBottom: "2px solid yellow",
+                    pb: "5px",
+                    marginLeft: {
+                      xs: "auto",
+                      md: "20px",
+                    },
+                    fontSize: {
+                      xs: "26px",
+                      md: "60px",
+                    },
+                    transform: {
+                      xs: "rotate(-90deg)",
+                      md: "none",
+                    },
+                    transformOrigin: "center-left",
+                  }}
+                >
+                  Thursday
                 </Typography>
-                <Typography variant="button" color="black">
-                  Main: {menu.thursday_main}
-                </Typography>
-                <Typography variant="button" color="black">
-                  Sweet: {menu.thursday_sweet}
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "2",
+                    alignItems: {
+                      xs: "center",
+                      md: "center",
+                    },
+                    paddingRight: {
+                      xs: "auto",
+                      md: "20px", // Set your desired value for desktop
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Starter:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.thursday_starter}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Main:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.thursday_main}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Sweet:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.thursday_sweet}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                marginTop: "15px",
-                marginBottom: "15px",
-                height: "200px",
-                width: "100%",
-                bgcolor: "whitesmoke",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                boxShadow:
-                  "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-              }}
-            >
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{
-                  flex: "1",
-                  borderBottom: "2px solid yellow",
-                  pb: "5px",
-                  marginLeft: "30px",
-                }}
-              >
-                Friday
-              </Typography>
               <Box
                 sx={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  height: "200px",
+                  width: "100%",
+                  bgcolor: "whitesmoke",
                   display: "flex",
-                  flexDirection: "column",
-                  flex: "2",
-                  alignItems: "flex-end",
-                  pr: "20px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
+                  marginLeft: { xs: "0px", md: "100px" },
                 }}
               >
-                <Typography variant="button" color="black">
-                  Starter: {menu.friday_starter}
+                <Typography
+                  variant="h3"
+                  color="black"
+                  sx={{
+                    flex: "1",
+                    borderBottom: "2px solid yellow",
+                    pb: "5px",
+                    marginLeft: {
+                      xs: "auto",
+                      md: "20px",
+                    },
+                    fontSize: {
+                      xs: "26px",
+                      md: "60px",
+                    },
+                    transform: {
+                      xs: "rotate(-90deg)",
+                      md: "none",
+                    },
+                    transformOrigin: "center-left",
+                  }}
+                >
+                  Friday
                 </Typography>
-                <Typography variant="button" color="black">
-                  Main: {menu.friday_main}
-                </Typography>
-                <Typography variant="button" color="black">
-                  Sweet: {menu.friday_sweet}
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "2",
+                    alignItems: {
+                      xs: "center",
+                      md: "center",
+                    },
+                    paddingRight: {
+                      xs: "auto",
+                      md: "20px", // Set your desired value for desktop
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Starter
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.friday_starter}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Main:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.friday_main}
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 8, md: 12 }, color: "darkgray" }}
+                  >
+                    Sweet:
+                  </Typography>
+                  <Typography
+                    variant="button"
+                    sx={{ fontSize: { xs: 10, md: 20 }, color: "black" }}
+                  >
+                    {menu.friday_sweet}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          </>
-        ))}
-      </Box>
+            </>
+          ))}
+        </Box>
+      </div>
       <NavLink to="/login">
         <Fab color="primary" variant="extended" size="medium">
           <LoginIcon />
