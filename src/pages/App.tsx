@@ -133,6 +133,10 @@ function App() {
                   boxShadow:
                     "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
                   marginLeft: { xs: "0px", md: "100px" },
+                  transition: "transform 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 <Typography
@@ -170,7 +174,7 @@ function App() {
                     },
                     paddingRight: {
                       xs: "auto",
-                      md: "20px", // Set your desired value for desktop
+                      md: "20px",
                     },
                   }}
                 >
@@ -225,6 +229,10 @@ function App() {
                   boxShadow:
                     "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
                   marginLeft: { xs: "0px", md: "-100px" },
+                  transition: "transform 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 <Typography
@@ -262,7 +270,7 @@ function App() {
                     },
                     paddingRight: {
                       xs: "auto",
-                      md: "20px", // Set your desired value for desktop
+                      md: "20px",
                     },
                   }}
                 >
@@ -317,6 +325,10 @@ function App() {
                   boxShadow:
                     "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
                   marginLeft: { xs: "0px", md: "100px" },
+                  transition: "transform 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 <Typography
@@ -354,7 +366,7 @@ function App() {
                     },
                     paddingRight: {
                       xs: "auto",
-                      md: "20px", // Set your desired value for desktop
+                      md: "20px",
                     },
                   }}
                 >
@@ -409,6 +421,10 @@ function App() {
                   boxShadow:
                     "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
                   marginLeft: { xs: "0px", md: "-100px" },
+                  transition: "transform 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 <Typography
@@ -446,7 +462,7 @@ function App() {
                     },
                     paddingRight: {
                       xs: "auto",
-                      md: "20px", // Set your desired value for desktop
+                      md: "20px",
                     },
                   }}
                 >
@@ -501,6 +517,10 @@ function App() {
                   boxShadow:
                     "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;",
                   marginLeft: { xs: "0px", md: "100px" },
+                  transition: "transform 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               >
                 <Typography
@@ -538,7 +558,7 @@ function App() {
                     },
                     paddingRight: {
                       xs: "auto",
-                      md: "20px", // Set your desired value for desktop
+                      md: "20px",
                     },
                   }}
                 >
